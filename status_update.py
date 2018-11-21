@@ -11,7 +11,7 @@ authenticate = tweepy.OAuthHandler(account_info.consumer_key, account_info.consu
 authenticate.set_access_token(account_info.access_token, account_info.access_token_secret)
 api = tweepy.API(authenticate, wait_on_rate_limit=True)
 
-postTime = 11
+postTime = 43
 
 log = logs.Log('out.log')
 link = link_generator.LinkGenerator(log)
@@ -21,8 +21,7 @@ myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
 myStream.filter(track=['@' + account_info.account_user_name + " prog"], async=True)
 
 def signal_handler(signal, frame):
-    log.debug("Keyboard Interrupt.")
-    log.close()
+    log.printLog("debug","Keyboard Interrupt.")
     os._exit(1)
 
 def postTweet(api, postTime):

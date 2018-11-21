@@ -114,7 +114,7 @@ class LinkGenerator:
         
         selected = random.choice(band_list)
         
-        self.__log.debug("Band: " + str(selected))
+        self.__log.printLog("debug","Band: " + str(selected))
 
         return selected
 
@@ -129,7 +129,7 @@ class LinkGenerator:
             
         selected = random.choice(album_list)
         
-        self.__log.debug("Album: " + str(selected))
+        self.__log.printLog("debug","Album: " + str(selected))
 
         return selected
 
@@ -143,6 +143,6 @@ class LinkGenerator:
 
             selected = random.choice(track_list)
             
-            self.__log.debug("Track: " + str(selected))
+            self.__log.printLog("debug", "Track: " + str(selected))
         
             return selected

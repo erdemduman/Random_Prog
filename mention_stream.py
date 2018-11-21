@@ -15,7 +15,7 @@ class MyStreamListener(tweepy.StreamListener):
     
     def on_error(self, status_code):
         if status_code == 420:
-            self.__log.error("Mention error is here.")
+            self.__log.printLog("error","Mention error is here.")
             return False
     
     def mention_tweet(self, dest):

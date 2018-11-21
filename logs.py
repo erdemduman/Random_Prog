@@ -4,19 +4,16 @@ class Log:
     def __init__(self, logFile):
         self.__logFile = logFile
         self.__lock = threading.Lock()
-        self.__log = open(logFile, 'w')
-
-    def error(self, msg):
-        with self.__lock:
-            self.__log.write("ERROR: " + str(msg) + "\n")
     
-    def warning(self, msg):
+    def printLog(self, type, msg):
         with self.__lock:
-            self.__log.write("WARNING: " + str(msg) + "\n")
+            log = open(self.__logFile, 'a+')
 
-    def debug(self, msg):
-        with self.__lock:
-            self.__log.write("DEBUG: " + str(msg) + "\n")
-    
-    def close(self):
-        self.__log.close()
+            if type.lower() == "debug":
+                log.write("DEBUG: " + str(msg) + "\n")   
+            elif type.lower() == "warning":
+                log.write("WARNING: " + str(msg) + "\n")
+            elif type.lower() == "error":
+                log.write("ERROR: " + str(msg) + "\n")
+            
+            log.close()
